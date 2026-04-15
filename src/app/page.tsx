@@ -348,20 +348,20 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             {/* Text */}
-            <div className="text-center lg:text-left">
+            <div className="text-center">
               <span className="text-[#00c07a] text-xs font-bold tracking-widest uppercase">{t.project.tag}</span>
               <h2 className="text-3xl sm:text-4xl font-black text-[#0f4c35] mt-3 mb-5 leading-tight">
                 {t.project.h2}
               </h2>
               <p className="text-slate-600 leading-relaxed text-lg">{t.project.p}</p>
-              <div className="mt-8 grid grid-cols-2 gap-4 text-sm max-w-sm mx-auto lg:max-w-none lg:mx-0">
+              <div className="mt-8 grid grid-cols-2 gap-4 text-sm max-w-sm mx-auto">
                 {[
                   { label: lang === "es" ? "Tamaño" : "Size",  val: "1,000 m²" },
                   { label: lang === "es" ? "Uso" : "Use",      val: lang === "es" ? "Libre Construcción" : "Build Freely" },
                   { label: lang === "es" ? "Título" : "Title", val: lang === "es" ? "Propiedad Plena" : "Full Ownership" },
                   { label: lang === "es" ? "Pago" : "Payment", val: lang === "es" ? "Facilidades" : "Flexible Plans" },
                 ].map((item) => (
-                  <div key={item.label} className="bg-[#f8fdfb] rounded-xl p-4 border border-[#e2f0eb] text-left">
+                  <div key={item.label} className="bg-[#f8fdfb] rounded-xl p-4 border border-[#e2f0eb] text-center">
                     <div className="text-xs text-slate-400 uppercase tracking-wider font-semibold">{item.label}</div>
                     <div className="font-bold text-[#0f4c35] mt-1">{item.val}</div>
                   </div>
@@ -433,9 +433,9 @@ export default function Home() {
             {t.location.items.map((item) => (
               <div
                 key={item.text}
-                className="flex items-start gap-4 bg-white/10 hover:bg-white/15 border border-white/10 rounded-2xl p-5 transition-colors"
+                className="flex flex-col items-center text-center gap-3 bg-white/10 hover:bg-white/15 border border-white/10 rounded-2xl p-5 transition-colors"
               >
-                <span className="text-2xl mt-0.5 shrink-0">{item.icon}</span>
+                <span className="text-3xl">{item.icon}</span>
                 <div>
                   <p className="font-semibold text-white leading-snug">{item.text}</p>
                   <p className="text-[#7fffc4]/70 text-sm mt-1">{item.detail}</p>
