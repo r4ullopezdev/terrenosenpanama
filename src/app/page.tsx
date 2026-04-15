@@ -257,7 +257,7 @@ export default function Home() {
 
       {/* ── NAV ── */}
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           scrolled ? "nav-solid shadow-lg" : "bg-[#0f4c35]/90 backdrop-blur-md"
         }`}
       >
@@ -349,28 +349,30 @@ export default function Home() {
       <section id="proyecto" className="section-pad bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div>
+            {/* Text */}
+            <div className="text-center lg:text-left">
               <span className="text-[#00c07a] text-xs font-bold tracking-widest uppercase">{t.project.tag}</span>
               <h2 className="text-3xl sm:text-4xl font-black text-[#0f4c35] mt-3 mb-5 leading-tight">
                 {t.project.h2}
               </h2>
               <p className="text-slate-600 leading-relaxed text-lg">{t.project.p}</p>
-              <div className="mt-8 grid grid-cols-2 gap-4 text-sm">
+              <div className="mt-8 grid grid-cols-2 gap-4 text-sm max-w-sm mx-auto lg:max-w-none lg:mx-0">
                 {[
-                  { label: lang === "es" ? "Tamaño" : "Size",         val: "1,000 m²" },
-                  { label: lang === "es" ? "Uso" : "Use",             val: lang === "es" ? "Libre Construcción" : "Build Freely" },
-                  { label: lang === "es" ? "Título" : "Title",        val: lang === "es" ? "Propiedad Plena" : "Full Ownership" },
-                  { label: lang === "es" ? "Pago" : "Payment",        val: lang === "es" ? "Facilidades" : "Flexible Plans" },
+                  { label: lang === "es" ? "Tamaño" : "Size",  val: "1,000 m²" },
+                  { label: lang === "es" ? "Uso" : "Use",      val: lang === "es" ? "Libre Construcción" : "Build Freely" },
+                  { label: lang === "es" ? "Título" : "Title", val: lang === "es" ? "Propiedad Plena" : "Full Ownership" },
+                  { label: lang === "es" ? "Pago" : "Payment", val: lang === "es" ? "Facilidades" : "Flexible Plans" },
                 ].map((item) => (
-                  <div key={item.label} className="bg-[#f8fdfb] rounded-xl p-4 border border-[#e2f0eb]">
+                  <div key={item.label} className="bg-[#f8fdfb] rounded-xl p-4 border border-[#e2f0eb] text-left">
                     <div className="text-xs text-slate-400 uppercase tracking-wider font-semibold">{item.label}</div>
                     <div className="font-bold text-[#0f4c35] mt-1">{item.val}</div>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-3 h-[420px]">
-              <div className="col-span-2 relative rounded-2xl overflow-hidden">
+            {/* Images */}
+            <div className="flex flex-col gap-3">
+              <div className="relative rounded-2xl overflow-hidden h-56 sm:h-72 lg:h-80">
                 <Image
                   src="https://images.unsplash.com/photo-1501854140801-50d01698950b?w=800&q=75"
                   alt={t.project.img1alt}
@@ -379,23 +381,25 @@ export default function Home() {
                   sizes="(max-width: 1024px) 100vw, 50vw"
                 />
               </div>
-              <div className="relative rounded-2xl overflow-hidden">
-                <Image
-                  src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&q=75"
-                  alt={t.project.img2alt}
-                  fill
-                  className="object-cover"
-                  sizes="25vw"
-                />
-              </div>
-              <div className="relative rounded-2xl overflow-hidden">
-                <Image
-                  src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&q=75"
-                  alt={t.project.img3alt}
-                  fill
-                  className="object-cover"
-                  sizes="25vw"
-                />
+              <div className="grid grid-cols-2 gap-3">
+                <div className="relative rounded-2xl overflow-hidden h-36 sm:h-48">
+                  <Image
+                    src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&q=75"
+                    alt={t.project.img2alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 50vw, 25vw"
+                  />
+                </div>
+                <div className="relative rounded-2xl overflow-hidden h-36 sm:h-48">
+                  <Image
+                    src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=400&q=75"
+                    alt={t.project.img3alt}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 1024px) 50vw, 25vw"
+                  />
+                </div>
               </div>
             </div>
           </div>
@@ -431,7 +435,7 @@ export default function Home() {
             {t.location.items.map((item) => (
               <div
                 key={item.text}
-                className="flex items-start gap-4 bg-white/8 hover:bg-white/12 border border-white/10 rounded-2xl p-5 transition-colors"
+                className="flex items-start gap-4 bg-white/10 hover:bg-white/15 border border-white/10 rounded-2xl p-5 transition-colors"
               >
                 <span className="text-2xl mt-0.5 shrink-0">{item.icon}</span>
                 <div>

@@ -154,8 +154,23 @@ body {
 
 /* ── Section spacing ── */
 .section-pad {
-  padding: 5rem 1.5rem;
+  padding: 4rem 1.25rem;
 }
-@media (min-width: 768px) {
+@media (min-width: 640px) {
+  .section-pad { padding: 5rem 2rem; }
+}
+@media (min-width: 1024px) {
   .section-pad { padding: 6rem 2rem; }
+}
+
+/* ── Responsive images ── */
+img { max-width: 100%; height: auto; }
+
+/* ── Mobile: full-width buttons ── */
+@media (max-width: 480px) {
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
 }
