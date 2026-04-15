@@ -222,7 +222,6 @@ const T = {
    ═══════════════════════════════════════════ */
 export default function Home() {
   const [lang, setLang] = useState<"es" | "en">("es");
-  const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", message: "" });
@@ -262,14 +261,32 @@ export default function Home() {
         }`}
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-16">
-          <a href="#" className="font-black text-lg text-white tracking-tight">
-            terrenos<span className="text-[#00c07a]">enpanama.com</span>
+
+          {/* Logo */}
+          <a href="#" className="flex items-center gap-2.5 shrink-0">
+            <div className="w-10 h-10 rounded-full overflow-hidden ring-2 ring-white/25 bg-white/10 shrink-0">
+              <Image
+                src="/logo.png"
+                alt="Proyecto Villa Real"
+                width={40}
+                height={40}
+                className="object-cover w-full h-full"
+              />
+            </div>
+            <span className="hidden lg:flex flex-col leading-tight">
+              <span className="text-white font-bold text-sm">Proyecto</span>
+              <span className="text-[#00c07a] font-black text-sm">Villa Real</span>
+            </span>
           </a>
+
+          {/* Desktop nav links */}
           <div className="hidden lg:flex items-center gap-7 text-sm font-semibold text-white/80">
-            <a href="#proyecto" className="hover:text-[#00c07a] transition-colors">{t.nav.project}</a>
+            <a href="#proyecto"  className="hover:text-[#00c07a] transition-colors">{t.nav.project}</a>
             <a href="#ubicacion" className="hover:text-[#00c07a] transition-colors">{t.nav.location}</a>
-            <a href="#faq" className="hover:text-[#00c07a] transition-colors">{t.nav.faq}</a>
+            <a href="#faq"       className="hover:text-[#00c07a] transition-colors">{t.nav.faq}</a>
           </div>
+
+          {/* Right: lang toggle + Contactar (desktop only) */}
           <div className="flex items-center gap-3">
             <div className="flex items-center bg-white/10 border border-white/20 rounded-full p-0.5 text-xs font-bold">
               <button
@@ -281,31 +298,12 @@ export default function Home() {
                 className={`px-3 py-1 rounded-full transition-all ${lang === "en" ? "bg-white text-[#0f4c35]" : "text-white/70 hover:text-white"}`}
               >EN</button>
             </div>
-            <a href="#contacto" className="hidden sm:inline-flex btn-primary text-sm py-2 px-5">
+            <a href="#contacto" className="hidden lg:inline-flex btn-primary text-sm py-2 px-5">
               {t.nav.contact}
             </a>
-            <button
-              className="lg:hidden text-white p-1"
-              onClick={() => setMenuOpen(!menuOpen)}
-              aria-label="Menu"
-            >
-              <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2">
-                {menuOpen
-                  ? <><line x1="4" y1="4" x2="20" y2="20"/><line x1="20" y1="4" x2="4" y2="20"/></>
-                  : <><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></>
-                }
-              </svg>
-            </button>
           </div>
+
         </div>
-        {menuOpen && (
-          <div className="lg:hidden bg-[#0f4c35] border-t border-white/10 px-6 py-4 flex flex-col gap-4 text-sm font-semibold text-white/80">
-            <a href="#proyecto"  onClick={() => setMenuOpen(false)} className="hover:text-[#00c07a]">{t.nav.project}</a>
-            <a href="#ubicacion" onClick={() => setMenuOpen(false)} className="hover:text-[#00c07a]">{t.nav.location}</a>
-            <a href="#faq"       onClick={() => setMenuOpen(false)} className="hover:text-[#00c07a]">{t.nav.faq}</a>
-            <a href="#contacto"  onClick={() => setMenuOpen(false)} className="btn-primary text-sm py-2 px-5 self-start">{t.nav.contact}</a>
-          </div>
-        )}
       </nav>
 
       {/* ── HERO ── */}
@@ -412,9 +410,9 @@ export default function Home() {
           <span className="text-[#00c07a] text-xs font-bold tracking-widest uppercase">{t.infra.tag}</span>
           <h2 className="text-3xl sm:text-4xl font-black text-[#0f4c35] mt-3 mb-3 leading-tight">{t.infra.h2}</h2>
           <p className="text-slate-500 max-w-xl mx-auto mb-12">{t.infra.sub}</p>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {t.infra.items.map((item) => (
-              <div key={item.title} className="feature-card">
+              <div key={item.title} className="feature-card text-center">
                 <div className="text-4xl mb-4">{item.icon}</div>
                 <h3 className="text-lg font-bold text-[#0f4c35] mb-2">{item.title}</h3>
                 <p className="text-slate-500 text-sm leading-relaxed">{item.desc}</p>
@@ -457,7 +455,7 @@ export default function Home() {
           </div>
           <div className="grid sm:grid-cols-2 gap-6">
             {t.invest.items.map((item) => (
-              <div key={item.title} className="invest-card">
+              <div key={item.title} className="invest-card text-center">
                 <div className="text-3xl mb-3">{item.icon}</div>
                 <h3 className="text-xl font-bold text-[#0f4c35] mb-2">{item.title}</h3>
                 <p className="text-slate-500 leading-relaxed">{item.desc}</p>
