@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+// Initialized lazily inside the handler so the build doesn't fail without a real API key
+
 
 function escapeHtml(str: string): string {
   return str
@@ -85,6 +86,8 @@ export async function POST(req: NextRequest) {
       </p>
     </div>
   `;
+
+  const resend = new Resend(process.env.RESEND_API_KEY);
 
   try {
     await resend.emails.send({
