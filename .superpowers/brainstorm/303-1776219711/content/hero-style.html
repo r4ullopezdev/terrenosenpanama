@@ -1,0 +1,62 @@
+<h2>¿Cómo debe verse el hero de la página?</h2>
+<p class="subtitle">La primera impresión que recibe cada visitante</p>
+
+<div class="cards">
+
+  <!-- OPCIÓN A: Pantalla completa con texto centrado -->
+  <div class="card" data-choice="fullscreen-centered" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: linear-gradient(160deg, rgba(15,76,53,0.88) 0%, rgba(0,192,122,0.45) 100%), url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=60') center/cover; min-height: 200px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; text-align: center; gap: 10px;">
+      <div style="font-size: 10px; color: #7fffc4; letter-spacing: 4px; text-transform: uppercase; background: rgba(0,192,122,0.2); border: 1px solid rgba(127,255,196,0.4); padding: 4px 14px; border-radius: 100px;">Últimos Lotes Disponibles</div>
+      <div style="font-size: 26px; font-weight: 900; color: #fff; line-height: 1.1;">Su Terreno en<br>Panamá</div>
+      <div style="font-size: 11px; color: rgba(255,255,255,0.8);">A 15 min de la playa · 1,000 m²</div>
+      <div style="background: #00c07a; color: #fff; padding: 8px 20px; border-radius: 100px; font-size: 11px; font-weight: 700; margin-top: 6px;">Solicitar Información →</div>
+    </div>
+    <div class="card-body">
+      <h3>A — Pantalla Completa Centrada</h3>
+      <p>Foto de fondo con overlay oscuro. Texto centrado, grande e impactante. CTA flotando en el centro. Máximo impacto emocional desde el primer segundo.</p>
+    </div>
+  </div>
+
+  <!-- OPCIÓN B: Split hero (texto izq + imagen der) -->
+  <div class="card" data-choice="split-hero" onclick="toggleSelect(this)">
+    <div class="card-image" style="min-height: 200px; display: flex; overflow: hidden; background: #0f4c35;">
+      <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 20px; gap: 8px;">
+        <div style="font-size: 9px; color: #7fffc4; letter-spacing: 3px; text-transform: uppercase;">Proyecto Villa Real</div>
+        <div style="font-size: 20px; font-weight: 900; color: #fff; line-height: 1.15;">Lotes en<br>Las Lajas<br>Coronado</div>
+        <div style="font-size: 10px; color: rgba(255,255,255,0.7);">1,000 m² · Servicios completos</div>
+        <div style="background: #00c07a; color: #fff; padding: 6px 14px; border-radius: 100px; font-size: 10px; font-weight: 700; display: inline-block; margin-top: 4px; width: fit-content;">Ver Proyecto</div>
+      </div>
+      <div style="flex: 1; background: url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&q=60') center/cover; position: relative;">
+        <div style="position: absolute; inset: 0; background: linear-gradient(to right, #0f4c35 0%, transparent 40%);"></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>B — Split Hero</h3>
+      <p>Mitad texto (izquierda) y mitad foto (derecha). Diseño editorial moderno. Permite leer el mensaje sin distracciones mientras la imagen apoya visualmente.</p>
+    </div>
+  </div>
+
+  <!-- OPCIÓN C: Hero + barra de stats prominente -->
+  <div class="card" data-choice="fullscreen-stats" onclick="toggleSelect(this)">
+    <div class="card-image" style="background: linear-gradient(160deg, rgba(15,76,53,0.9) 0%, rgba(26,122,82,0.7) 100%), url('https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=60') center/cover; min-height: 200px; display: flex; flex-direction: column; justify-content: flex-end; padding: 0; overflow: hidden;">
+      <div style="padding: 20px; display: flex; flex-direction: column; gap: 8px; align-items: flex-start;">
+        <div style="font-size: 9px; color: #7fffc4; letter-spacing: 3px; text-transform: uppercase;">Las Lajas · Coronado · Panamá</div>
+        <div style="font-size: 24px; font-weight: 900; color: #fff; line-height: 1.1;">La Inversión<br>Perfecta</div>
+        <div style="background: #00c07a; color: #fff; padding: 7px 16px; border-radius: 100px; font-size: 10px; font-weight: 700;">Contactar Ahora →</div>
+      </div>
+      <div style="background: rgba(0,0,0,0.5); backdrop-filter: blur(8px); display: flex; justify-content: space-around; padding: 12px; border-top: 1px solid rgba(127,255,196,0.2);">
+        <div style="text-align: center;"><div style="font-size: 14px; font-weight: 800; color: #7fffc4;">1,000m²</div><div style="font-size: 8px; color: rgba(255,255,255,0.6); text-transform: uppercase;">Por Lote</div></div>
+        <div style="text-align: center;"><div style="font-size: 14px; font-weight: 800; color: #7fffc4;">15 min</div><div style="font-size: 8px; color: rgba(255,255,255,0.6); text-transform: uppercase;">A la playa</div></div>
+        <div style="text-align: center;"><div style="font-size: 14px; font-weight: 800; color: #7fffc4;">100%</div><div style="font-size: 8px; color: rgba(255,255,255,0.6); text-transform: uppercase;">Escriturado</div></div>
+        <div style="text-align: center;"><div style="font-size: 14px; font-weight: 800; color: #7fffc4;">USD $</div><div style="font-size: 8px; color: rgba(255,255,255,0.6); text-transform: uppercase;">Moneda</div></div>
+      </div>
+    </div>
+    <div class="card-body">
+      <h3>C — Hero + Barra de Stats</h3>
+      <p>Foto completa con texto alineado abajo (estilo Apple/AirBnb). Barra con los 4 datos clave siempre visibles. Equilibrio perfecto entre impacto visual e información.</p>
+    </div>
+  </div>
+
+</div>
+
+<p class="subtitle" style="margin-top: 1.5rem; text-align: center; font-size: 0.9rem;">Haz clic para seleccionar · Puedes responder también en el terminal</p>
