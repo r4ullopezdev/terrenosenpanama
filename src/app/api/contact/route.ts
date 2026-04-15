@@ -3,6 +3,15 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
 interface ContactBody {
   name: string;
   email: string;
@@ -33,8 +42,8 @@ export async function POST(req: NextRequest) {
 
   const subject =
     lang === "en"
-      ? `New inquiry from ${name} — Villa Real`
-      : `Nueva consulta de ${name} — Villa Real`;
+      ? `New inquiry from ${escapeHtml(name)} — Villa Real`
+      : `Nueva consulta de ${escapeHtml(name)} — Villa Real`;
 
   const html = `
     <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; color: #1e293b;">
@@ -46,24 +55,24 @@ export async function POST(req: NextRequest) {
           <td style="padding: 8px 0; font-weight: 600; width: 120px; color: #64748b;">
             ${lang === "en" ? "Name" : "Nombre"}:
           </td>
-          <td style="padding: 8px 0;">${name}</td>
+          <td style="padding: 8px 0;">${escapeHtml(name)}</td>
         </tr>
         <tr>
           <td style="padding: 8px 0; font-weight: 600; color: #64748b;">Email:</td>
-          <td style="padding: 8px 0;"><a href="mailto:${email}">${email}</a></td>
+          <td style="padding: 8px 0;"><a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></td>
         </tr>
         ${phone ? `
         <tr>
           <td style="padding: 8px 0; font-weight: 600; color: #64748b;">
             ${lang === "en" ? "Phone" : "Teléfono"}:
           </td>
-          <td style="padding: 8px 0;">${phone}</td>
+          <td style="padding: 8px 0;">${escapeHtml(phone)}</td>
         </tr>` : ""}
         <tr>
           <td style="padding: 8px 0; font-weight: 600; color: #64748b; vertical-align: top;">
             ${lang === "en" ? "Message" : "Mensaje"}:
           </td>
-          <td style="padding: 8px 0; white-space: pre-wrap;">${message}</td>
+          <td style="padding: 8px 0; white-space: pre-wrap;">${escapeHtml(message)}</td>
         </tr>
         <tr>
           <td style="padding: 8px 0; font-weight: 600; color: #64748b;">Idioma / Lang:</td>
